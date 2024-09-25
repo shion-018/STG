@@ -23,6 +23,8 @@ public class EnemyScript : MonoBehaviour
     void SpawnEnemy()
     {
         int randomIndex = Random.Range(0, spawnPoints.Length);
-        Instantiate(enemyPrefab, spawnPoints[randomIndex].position, Quaternion.identity);
+        GameObject enemy  = Instantiate(enemyPrefab, spawnPoints[randomIndex].position, Quaternion.identity);
+        
+        EnemyManager.Instance.AddEnemy(enemy);
     }
 }

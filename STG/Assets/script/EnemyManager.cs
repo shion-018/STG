@@ -30,19 +30,17 @@ public class EnemyManager : MonoBehaviour
         }
     }
 
-    // 敵を追加するメソッド
+
     public void AddEnemy(GameObject enemy)
     {
         enemies.Add(enemy);
     }
 
-    // 敵を削除するメソッド
     public void RemoveEnemy(GameObject enemy)
     {
         enemies.Remove(enemy);
     }
 
-    // 敵リストを取得するメソッド
     public GameObject[] GetEnemies()
     {
         return enemies.ToArray();

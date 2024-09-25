@@ -6,7 +6,7 @@ public class BulletScript : MonoBehaviour
 {
     public float speed = 10.0f;
     public float destroyTime = 3.0f;
-    public float hitRadius = 0.5f; 
+    public float hitRadius = 1f; 
 
     void Start()
     {
@@ -29,6 +29,7 @@ public class BulletScript : MonoBehaviour
             float distance = Vector3.Distance(transform.position, enemy.transform.position);
             if (distance < hitRadius)
             {
+                EnemyManager.Instance.RemoveEnemy(enemy);
                 Destroy(enemy);
                 Destroy(gameObject);
                 break; 
