@@ -8,6 +8,7 @@ public class PlayerScript : MonoBehaviour
     public float bulletSpeed = 10.0f; 
     public Transform bulletSpawnPoint; 
     public float speed = 5.0f;
+    [SerializeField] float bulletBurst = 0.2f;
     // Start is called before the first frame update
     void Start()
     {
@@ -25,7 +26,7 @@ public class PlayerScript : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            Shoot();
+            StartCoroutine(IsShoot());
         }
     }
     void Shoot()
@@ -33,5 +34,14 @@ public class PlayerScript : MonoBehaviour
         GameObject bullet = Instantiate(bulletPrefab, bulletSpawnPoint.position, Quaternion.identity);
         Rigidbody rb = bullet.GetComponent<Rigidbody>();
         rb.velocity = Vector2.up * bulletSpeed;
+        Debug.Log("shoot!");
+    }
+
+
+    IEnumerator IsShoot()
+    {
+        Shoot();
+        yield return new WaitForSeconds(bulletBurst);
+        Shoot();
     }
 }
